@@ -1,8 +1,8 @@
 export const skills = {
-  Backend: ["Node.js", "Express.js", "NestJS", "Java", "Spring Boot"],
-  Frontend: ["React.js", "HTML", "CSS", "JavaScript", "Tailwind", "Bootstrap"],
-  "Databases & ORM": ["MongoDB", "PostgreSQL", "MySQL", "Prisma", "Sequelize"],
-  "Caching & Tools": ["Redis", "Git", "GitHub", "Apache Kafka", "WebSockets"],
+  Backend:             ["Node.js", "Express.js", "NestJS", "Java", "Spring Boot"],
+  Frontend:            ["React.js", "HTML", "CSS", "JavaScript", "Tailwind", "Bootstrap"],
+  "Databases & ORM":   ["MongoDB", "PostgreSQL", "MySQL", "Prisma", "Sequelize"],
+  "Tools & DevOps":    ["Redis", "Git", "GitHub", "Apache Kafka", "WebSockets", "JWT"],
 };
 
 export const experience = [
@@ -42,33 +42,37 @@ export const projects = [
     title: "Inventory Management System",
     tech: ["Spring Boot 3", "Java 21", "Apache Kafka", "Redis", "PostgreSQL", "WebSockets", "JWT"],
     description:
-      "High-concurrency event-driven system using Spring Boot & Kafka to decouple Order and Notification services. Features Optimistic Locking for race condition resolution, WebSocket real-time updates, Redis caching, and fine-grained JWT access control.",
+      "High-concurrency event-driven system using Spring Boot & Kafka to decouple Order and Notification services. Features Optimistic Locking, WebSocket real-time updates, Redis caching, and fine-grained JWT access control.",
     highlight: "Event-Driven Architecture",
     link: "https://github.com/Muhammad-Absar-ul-Haque/Inventory-Management-Backend-Spring-boot",
+    liveLink: null,
   },
   {
     title: "Real-Time Chat Application",
     tech: ["Node.js", "Express", "MongoDB", "Socket.IO", "React", "Tailwind", "Zustand"],
     description:
-      "Full-stack real-time chat with Socket.IO, featuring live messaging, user connection tracking, and persistent chat history. Clean React frontend with Zustand state management.",
-    highlight: "Real-Time via WebSockets",
+      "Full-stack real-time chat with Socket.IO featuring live messaging, user connection tracking, and persistent chat history. React frontend with Zustand state management.",
+    highlight: "Real-Time WebSockets",
     link: "https://github.com/Muhammad-Absar-ul-Haque/fullstack-Chat-App",
+    liveLink: null,
   },
   {
     title: "EduConnect API",
     tech: ["Node.js", "Express", "MySQL", "Sequelize", "JWT"],
     description:
-      "Production-grade LMS backend with role-based access control, soft deletes, and robust data modeling. Features strict validation, JWT authentication, and automated Swagger documentation.",
+      "Production-grade LMS backend with role-based access control, soft deletes, and robust data modeling. Features strict validation, JWT auth, and automated Swagger documentation.",
     highlight: "Enterprise Architecture",
     link: "https://github.com/Muhammad-Absar-ul-Haque/Demo_Project",
+    liveLink: null,
   },
   {
     title: "PrizeBond Backend",
     tech: ["NestJS", "PostgreSQL", "Prisma", "Firebase", "JWT"],
     description:
-      "Comprehensive REST API managing P2P bond trading, admin oversight, and automated result parsing from PDFs. Integrates Firebase push notifications and robust role-based access.",
+      "Comprehensive REST API managing P2P bond trading, admin oversight, and automated result parsing from PDFs. Integrates Firebase push notifications and role-based access.",
     highlight: "Automated Result Scrutiny",
     link: "https://github.com/Muhammad-Absar-ul-Haque/prize-bond-backend-nodejs",
+    liveLink: null,
   },
 ];
 
@@ -86,18 +90,23 @@ export const stats = [
 ];
 
 export const contact = {
-  email: "absar.haque2003@gmail.com",
-  phone: "+92 318 2667926",
-  github: "https://github.com/Muhammad-Absar-ul-Haque",
+  email:    "absar.haque2003@gmail.com",
+  phone:    "+92 318 2667926",
+  github:   "https://github.com/Muhammad-Absar-ul-Haque",
+  linkedin: "https://linkedin.com/in/muhammad-absar-320205267",
   location: "Karachi, Pakistan",
 };
 
 export const navLinks = ["Home", "About", "Experience", "Projects", "Skills", "Contact"];
 
 export const typingRoles = [
-  "Backend Developer",
+  "MERN Stack Developer",
+  "Backend Engineer",
   "API Architect",
-  "Node.js Engineer",
+  "Node.js Developer",
   "Spring Boot Expert",
   "Full-Stack Builder",
 ];
+
+export const heroTagline =
+  "Backend-focused engineer building scalable APIs, real-time systems, and robust server-side architectures.";

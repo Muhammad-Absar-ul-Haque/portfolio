@@ -16,10 +16,8 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      style={{
-        padding: "100px 5%",
-        background: `${COLORS.bgCard}80`,
-      }}
+      className="section-pad"
+      style={{ background: `${COLORS.bgCard}80` }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <FadeIn>
@@ -35,6 +33,7 @@ export default function Experience() {
                   borderLeft: `3px solid ${i === 0 ? COLORS.accent : COLORS.accentAlt}`,
                 }}
               >
+                {/* Role + period row */}
                 <div
                   style={{
                     display: "flex",
@@ -46,22 +45,10 @@ export default function Experience() {
                   }}
                 >
                   <div>
-                    <h3
-                      style={{
-                        fontSize: 20,
-                        fontWeight: 600,
-                        marginBottom: 4,
-                      }}
-                    >
+                    <h3 style={{ fontSize: "clamp(16px, 2.5vw, 20px)", fontWeight: 600, marginBottom: 4 }}>
                       {exp.role}
                     </h3>
-                    <span
-                      style={{
-                        color: COLORS.accent,
-                        fontSize: 14,
-                        fontWeight: 500,
-                      }}
-                    >
+                    <span style={{ color: COLORS.accent, fontSize: 14, fontWeight: 500 }}>
                       {exp.company}
                     </span>
                   </div>
@@ -75,21 +62,16 @@ export default function Experience() {
                       fontSize: 12,
                       fontFamily: "monospace",
                       whiteSpace: "nowrap",
+                      alignSelf: "flex-start",
                     }}
                   >
                     {exp.period}
                   </span>
                 </div>
 
-                <ul
-                  style={{
-                    listStyle: "none",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 8,
-                  }}
-                >
-                  {exp.points.map((p, j) => (
+                {/* Bullet points */}
+                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
+                  {exp.points.map((pt, j) => (
                     <li
                       key={j}
                       style={{
@@ -100,16 +82,10 @@ export default function Experience() {
                         lineHeight: 1.7,
                       }}
                     >
-                      <span
-                        style={{
-                          color: COLORS.accentGreen,
-                          marginTop: 2,
-                          flexShrink: 0,
-                        }}
-                      >
+                      <span style={{ color: COLORS.accentGreen, marginTop: 2, flexShrink: 0 }}>
                         ▸
                       </span>
-                      {p}
+                      {pt}
                     </li>
                   ))}
                 </ul>

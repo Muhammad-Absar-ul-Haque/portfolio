@@ -6,19 +6,20 @@ export default function Contact() {
   const items = [
     { icon: "📧", label: "Email",    value: contact.email,    href: `mailto:${contact.email}` },
     { icon: "📞", label: "Phone",    value: contact.phone,    href: `tel:${contact.phone.replace(/\s/g, "")}` },
-    { icon: "🐙", label: "GitHub",   value: "Muhammad-Absar-ul-Haque", href: contact.github },
+    { icon: "🐙", label: "GitHub",   value: "Muhammad-Absar-ul-Haque", href: contact.github,   external: true },
+    {
+      icon: "💼",
+      label: "LinkedIn",
+      value: "muhammad-absar-ul-haque",
+      href: contact.linkedin,
+      external: true,
+    },
     { icon: "📍", label: "Location", value: contact.location, href: null },
   ];
 
   return (
-    <section id="contact" style={{ padding: "100px 5%" }}>
-      <div
-        style={{
-          maxWidth: 700,
-          margin: "0 auto",
-          textAlign: "center",
-        }}
-      >
+    <section id="contact" className="section-pad">
+      <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
         <FadeIn>
           <div
             style={{
@@ -29,33 +30,11 @@ export default function Contact() {
               justifyContent: "center",
             }}
           >
-            <span
-              style={{
-                fontFamily: "monospace",
-                color: COLORS.accent,
-                fontSize: 14,
-              }}
-            >
-              05.
-            </span>
-            <h2
-              style={{
-                fontSize: "clamp(28px, 4vw, 40px)",
-                fontWeight: 700,
-              }}
-            >
-              Contact
-            </h2>
+            <span style={{ fontFamily: "monospace", color: COLORS.accent, fontSize: 14 }}>05.</span>
+            <h2 style={{ fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 700 }}>Contact</h2>
           </div>
 
-          <p
-            style={{
-              color: COLORS.textMuted,
-              fontSize: 16,
-              lineHeight: 1.8,
-              marginBottom: 48,
-            }}
-          >
+          <p style={{ color: COLORS.textMuted, fontSize: 16, lineHeight: 1.8, marginBottom: 52 }}>
             I'm currently open to new opportunities. Whether you have a project,
             a question, or just want to connect — my inbox is always open.
           </p>
@@ -64,11 +43,11 @@ export default function Contact() {
             style={{
               display: "flex",
               justifyContent: "center",
-              gap: 32,
+              gap: "clamp(20px, 4vw, 40px)",
               flexWrap: "wrap",
             }}
           >
-            {items.map(({ icon, label, value, href }) => (
+            {items.map(({ icon, label, value, href, external }) => (
               <div key={label} style={{ textAlign: "center" }}>
                 <div style={{ fontSize: 24, marginBottom: 8 }}>{icon}</div>
                 <div
@@ -85,13 +64,14 @@ export default function Contact() {
                 {href ? (
                   <a
                     href={href}
-                    target="_blank"
-                    rel="noreferrer"
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
                     style={{
                       color: COLORS.textDim,
                       fontSize: 13,
                       textDecoration: "none",
                       transition: "color 0.2s",
+                      wordBreak: "break-all",
                     }}
                     onMouseEnter={(e) => (e.target.style.color = COLORS.accent)}
                     onMouseLeave={(e) => (e.target.style.color = COLORS.textDim)}
@@ -99,9 +79,7 @@ export default function Contact() {
                     {value}
                   </a>
                 ) : (
-                  <span style={{ color: COLORS.textDim, fontSize: 13 }}>
-                    {value}
-                  </span>
+                  <span style={{ color: COLORS.textDim, fontSize: 13 }}>{value}</span>
                 )}
               </div>
             ))}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import COLORS from "../styles/colors";
 
-export default function Cursor() {
+function CursorInner() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [dotPos, setDotPos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -12,7 +12,6 @@ export default function Cursor() {
       if (!isVisible) setIsVisible(true);
       setDotPos({ x: e.clientX, y: e.clientY });
     };
-
     window.addEventListener("mousemove", onMouseMove);
     return () => window.removeEventListener("mousemove", onMouseMove);
   }, [isVisible]);
@@ -23,10 +22,7 @@ export default function Cursor() {
       setPos((prev) => {
         const dx = dotPos.x - prev.x;
         const dy = dotPos.y - prev.y;
-        return {
-          x: prev.x + dx * 0.2,
-          y: prev.y + dy * 0.2,
-        };
+        return { x: prev.x + dx * 0.2, y: prev.y + dy * 0.2 };
       });
       animationFrameId = requestAnimationFrame(followMouse);
     };
@@ -50,7 +46,6 @@ export default function Cursor() {
         setIsHovering(false);
       }
     };
-
     window.addEventListener("mouseover", handleMouseOver);
     return () => window.removeEventListener("mouseover", handleMouseOver);
   }, []);
@@ -87,9 +82,16 @@ export default function Cursor() {
           transform: "translate(-50%, -50%)",
           pointerEvents: "none",
           zIndex: 9998,
-          transition: "width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, background-color 0.3s",
+          transition:
+            "width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, background-color 0.3s",
         }}
       />
     </>
   );
+}
+
+export default function Cursor() {
+  const isFinePointer = window.matchMedia("(pointer: fine)").matches;
+  if (!isFinePointer) return null;
+  return <CursorInner />;
 }

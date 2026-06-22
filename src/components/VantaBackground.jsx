@@ -1,48 +1,54 @@
-import React, { useState, useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import WAVES from 'vanta/dist/vanta.waves.min';
-import COLORS from '../styles/colors';
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+import WAVES from "vanta/dist/vanta.waves.min";
 
 export default function VantaBackground() {
-  const [vantaEffect, setVantaEffect] = useState(null);
-  const myRef = useRef(null);
+  const containerRef = useRef(null);
+  const effectRef = useRef(null);
 
   useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(WAVES({
-        el: myRef.current,
-        THREE: THREE,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: 0x1e293b, // Slate 800 for a highly professional wireframe look
-        shininess: 25.00,
-        waveHeight: 12.00,
-        waveSpeed: 0.50,
-        zoom: 0.8
-      }));
-    }
+    const timer = setTimeout(() => {
+      if (containerRef.current && !effectRef.current) {
+        effectRef.current = WAVES({
+          el: containerRef.current,
+          THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200,
+          minWidth: 200,
+          scale: 1,
+          scaleMobile: 1,
+          color: 0x1e293b,
+          shininess: 25,
+          waveHeight: 12,
+          waveSpeed: 0.5,
+          zoom: 0.8,
+        });
+      }
+    }, 300);
+
     return () => {
-      if (vantaEffect) vantaEffect.destroy();
+      clearTimeout(timer);
+      if (effectRef.current) {
+        effectRef.current.destroy();
+        effectRef.current = null;
+      }
     };
-  }, [vantaEffect]);
+  }, []);
 
   return (
-    <div 
-      ref={myRef} 
-      style={{ 
-        position: 'fixed', 
-        top: 0, 
-        left: 0, 
-        width: '100vw', 
-        height: '100vh', 
-        zIndex: -1, 
-        pointerEvents: 'none' 
-      }} 
+    <div
+      ref={containerRef}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        zIndex: -1,
+        pointerEvents: "none",
+      }}
     />
   );
 }
