@@ -74,6 +74,15 @@ export const projects = [
     link: "https://github.com/Muhammad-Absar-ul-Haque/prize-bond-backend-nodejs",
     liveLink: null,
   },
+  {
+    title: "Insta Backend",
+    tech: ["NestJS", "PostgreSQL", "Prisma", "Redis", "BullMQ", "Socket.IO", "Cloudinary"],
+    description:
+      "Production-shaped Instagram clone backend with a hybrid fan-out home feed, DMs and realtime notifications over Socket.IO, and BullMQ-driven async processing for stories, media, and moderation workflows.",
+    highlight: "Hybrid Fan-Out Feed",
+    link: "https://github.com/Muhammad-Absar-ul-Haque/Insta-Backend",
+    liveLink: null,
+  },
 ];
 
 export const certifications = [
